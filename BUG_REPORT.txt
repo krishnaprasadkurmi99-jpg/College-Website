@@ -1,0 +1,73 @@
+ABC College Website Bug Report
+==============================
+
+Date tested: 2026-10-28
+Scope: Root static website (index.html, script.js, styles.css)
+
+Bug 1: Sport & wellness facility image returns 404
+---------------------------------------------------
+Severity: Medium
+Status: Reproduced
+
+Location:
+- index.html, facility card for "Sport & wellness"
+- Image URL:
+  https://images.unsplash.com/photo-1526676037777-05a232554f77?auto=format&fit=crop&w=700&q=80
+
+Symptoms:
+- The Sport & wellness card appears in the Life on campus section.
+- Its image request returns HTTP 404.
+- Users see a broken image instead of the facility photo.
+- Opening the card's lightbox also uses the same unavailable Unsplash photo ID, so the enlarged image cannot load either.
+
+Steps to reproduce:
+1. Open index.html in a browser.
+2. Scroll to "Life on campus".
+3. Inspect the Sport & wellness card or its network requests.
+4. Observe that the image request responds with 404.
+
+Expected result:
+- The card and lightbox display a valid sports/wellness image.
+
+Recommended fix:
+- Replace both data-image and img src values for this card with a verified image URL.
+- Confirm the replacement returns HTTP 200 before release.
+
+Evidence:
+- Browser request capture on 2026-10-28:
+  HTTP 404 for the w=700 image URL above.
+
+Bug 2: Admissions content is outdated for the current site date
+----------------------------------------------------------------
+Severity: Low
+Status: Reproduced by content inspection
+
+Location:
+- index.html, admissions banner and Important dates section
+
+Symptoms:
+- The page advertises "Admissions 2025–26".
+- The important dates are 15 Jan 2025, 30 Apr 2025, and 15 Jun 2025.
+- The page footer also says "© 2025 ABC College".
+- The current test date is 2026-10-28, so visitors may be given expired application information.
+
+Expected result:
+- Admissions year, deadlines, start date, and footer copyright are updated for the active academic cycle, or the page clearly identifies the site as an archived/demo page.
+
+Recommended fix:
+- Replace the sample dates and academic year with verified current dates.
+- Update the footer year.
+- If this remains a demonstration site, make the demo status prominent near the admissions call to action rather than relying only on smaller sample-content notes.
+
+Validation completed
+--------------------
+- Root page loaded successfully in a browser.
+- Course list rendered 8 cards initially.
+- Faculty list rendered 4 cards initially.
+- Events filter changed to Notices and rendered 1 notice.
+- Course search correctly showed the empty state for an unmatched query.
+- Admission form correctly displayed validation feedback when submitted empty.
+- All in-page anchor targets resolved.
+- npm.cmd run build passed for frontend and backend.
+- npm.cmd run typecheck passed for frontend and backend.
+
