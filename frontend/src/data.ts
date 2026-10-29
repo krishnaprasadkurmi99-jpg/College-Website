@@ -11,5 +11,5 @@ export const courses: Course[] = [
 export const events = [
   { date: "18 FEB", title: "Open Campus Day", type: "Event", detail: "Meet our community, tour the studios, and ask your questions." },
   { date: "02 MAR", title: "Future Forum: Designing Tomorrow", type: "Event", detail: "A sample public conversation with makers and changemakers." },
-  { date: "12 JAN", title: "Applications now open", type: "Notice", detail: "Sample notice: applications for the 2025–26 academic year are open." },
+  { date: "12 JAN", title: "Applications now open", type: "Notice", detail: "Sample notice: applications for the 2026–27 academic year are open." },
 ];

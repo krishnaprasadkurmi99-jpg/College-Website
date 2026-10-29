@@ -17,7 +17,7 @@ const faculty = [
 const events = [
   { type: "event", date: "18", month: "FEB", title: "Open Campus Day", location: "ABC College · 10:00 AM", description: "Meet our community, tour the studios, and ask your questions." },
   { type: "event", date: "02", month: "MAR", title: "Future Forum: Designing Tomorrow", location: "Main auditorium · 4:00 PM", description: "A sample public conversation with makers and changemakers." },
-  { type: "notice", date: "12", month: "JAN", title: "Applications now open", location: "Admissions office · Online", description: "Sample notice: applications for the 2025–26 academic year are open." },
+  { type: "notice", date: "12", month: "JAN", title: "Applications now open", location: "Admissions office · Online", description: "Sample notice: applications for the 2026–27 academic year are open." },
 ];
 
 const $ = (selector) => document.querySelector(selector);

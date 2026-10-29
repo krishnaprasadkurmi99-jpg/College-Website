@@ -26,7 +26,7 @@ app.post("/api/auth/login", (req, res) => {
 });
 
 app.get("/api/courses", async (_req, res, next) => { try { const data = process.env.DEMO_AUTH === "true" ? [{ title: "Computer Science", code: "B.Tech", department: "Technology & Science" }] : await Course.find().lean(); res.json(data); } catch (error) { next(error); } });
-app.get("/api/events", async (_req, res, next) => { try { const data = process.env.DEMO_AUTH === "true" ? [{ title: "Open Campus Day", type: "Event", date: "2025-02-18" }] : await Event.find().sort({ date: 1 }).lean(); res.json(data); } catch (error) { next(error); } });
+app.get("/api/events", async (_req, res, next) => { try { const data = process.env.DEMO_AUTH === "true" ? [{ title: "Open Campus Day", type: "Event", date: "2027-02-18" }] : await Event.find().sort({ date: 1 }).lean(); res.json(data); } catch (error) { next(error); } });
 app.post("/api/admissions/enquiries", async (req, res, next) => { const body = z.object({ name: z.string().min(2).max(100), email: z.string().email(), interest: z.string().min(2).max(100), message: z.string().min(15).max(2000) }).safeParse(req.body); if (!body.success) return res.status(400).json({ error: "Please provide valid enquiry details." }); try { if (process.env.DEMO_AUTH !== "true") await Admission.create(body.data); res.status(201).json({ message: "Enquiry received." }); } catch (error) { next(error); } });
 app.get("/api/student/me", requireAuth(["student"]), (req, res) => res.json({ id: (req as AuthRequest).user?.id, attendance: 88, gpa: 3.74, notices: 4 }));
 app.get("/api/faculty/overview", requireAuth(["faculty", "admin"]), (_req, res) => res.json({ courses: 4, attendanceTasks: 12, pendingResults: 3 }));
